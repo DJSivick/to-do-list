@@ -1,9 +1,9 @@
 import axios from "axios"
 
 export const api = axios.create({
-  withCredentials: true,
+  withCredentials: false,
   headers: {'Content-Type': 'application/json'},
-  baseURL: "http://localhost:7000/api/",
+  baseURL: "https://localhost:7000/api/",
 })
 
 // defining a custom error handler for all APIs
