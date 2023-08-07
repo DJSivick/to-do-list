@@ -37,33 +37,17 @@ const Modal = ({mode, setShowModal, task, getData}) => {
           date: newDate
       }))
     }
-
+    
     //Revisit this
     const postData = async (e) => {
-      setData((data) => ({
-        ...data,
-        id: uuidv4()
-      }))
 
       e.preventDefault()
       try {
-
+        console.log("data: ", data)
         API.createToDo(data).then((resp) => {
           setShowModal(false);
           getData()
         })
-
-        // const resp = await fetch(`http://localhost:8000/todos`, {
-        //   method: "POST",
-        //   headers: {'Content-Type': 'application/json'},
-        //   body: JSON.stringify(data)
-        // })
-
-        // if(resp.status === 200){
-        //   console.log("Create Worked")
-        //   setShowModal(false)
-        //   getData()
-        // }
       } 
       catch (err) {
         console.error(err)
@@ -77,18 +61,6 @@ const Modal = ({mode, setShowModal, task, getData}) => {
           setShowModal(false)
           getData()
         })
-
-        // const resp =  await fetch(`http://localhost:8000/todos/${task.id}`, {
-        //   method: "PUT",
-        //   headers: {'Content-Type': 'application/json'},
-        //   body: JSON.stringify(data)
-        // }) 
-
-        // if(resp.status === 200){
-        //     console.log("Edit Worked")
-        //     setShowModal(false)
-        //     getData()
-        // }
       } 
       catch (err) {
         console.error(err)

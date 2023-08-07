@@ -2,8 +2,8 @@
 import ListHeader from "./components/ListHeader";
 import React, { useState, useEffect } from 'react';
 import ListItem from "./components/ListItem";
-import Auth from './components/Auth'
-import { useCookies } from 'react-cookie';
+//import Auth from './components/Auth'
+//import { useCookies } from 'react-cookie';
 import 'react-datepicker/dist/react-datepicker.css'
 import NewTasks from "./components/NewTasks";
 import InProgressTasks from "./components/InProgressTasks";
@@ -13,20 +13,16 @@ import {API} from "./services/index"
 
 
 const App = () => {
-  const [cookies] = useCookies(null)
+  //const [cookies] = useCookies(null)
   const [tasks , setTasks] = useState()
-  const authToken = cookies.AuthToken
-  const userEmail = cookies.Email
+  //const authToken = cookies.AuthToken
+  const userEmail = "devin@test.com"
 
   const getData = async () =>{
     try{
       API.getToDo(userEmail).then((resp) => {
         setTasks(resp)
       })
-
-      // const response = await fetch(`http://localhost:8000/todos/${userEmail}`)
-      // const json = await response.json()
-      // setTasks(json)
     }
     catch (err){
       console.error(err)
@@ -34,10 +30,10 @@ const App = () => {
   }
 
   useEffect(() => {
-    if(authToken){
+   
       getData() 
-    }
-  },[authToken]);
+    
+  },[]);
 
 
 const newTasks = tasks?.filter((task) => {
@@ -54,8 +50,8 @@ const completedTasks = tasks?.filter((task) => {
 
   return (
     <div className="app">
-      {!authToken && <Auth/>}
-      {authToken &&
+      {/* {!authToken && <Auth/>} */}
+      {
       <>
        <ListHeader listName={'Holiday tick List'} getData={getData}/>
        <p className="user-email">Welcome back {userEmail}</p>
