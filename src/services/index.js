@@ -1,9 +1,6 @@
 import { api } from "./axiosConfigs"
 import { defineCancelApiObject } from "./axiosUtils"
 
-// const bcrypt = require('bcrypt')
-// const jwt = require('jsonwebtoken')
-
 
 export const API = {
   getToDo: async function (email, cancel = false) {
@@ -13,11 +10,9 @@ export const API = {
       params:{
         email: email,
       },
-      // retrieving the signal value by using the property name
       signal: cancel ? cancelApiObject[this.getToDo.name].handleRequestCancellation().signal : undefined,
     })
 
-    // returning the product returned by the API
     return response.data
   },
 
@@ -58,5 +53,4 @@ export const API = {
   },
 }
 
-// defining the cancel API object for ProductAPI
 const cancelApiObject = defineCancelApiObject(API)
