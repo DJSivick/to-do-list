@@ -1,14 +1,11 @@
 {
   "compilerOptions": {
+    "moduleResolution": "node",
     "module": "ES6",
-    "jsx": "preserve",
-    "checkJs": true,
     "baseUrl": ".",
-      "paths": {
-        "$libs": ["src/libs"],
-        "$libs/*": ["src/libs/*"],
-      },
-      "moduleResolution":"node",
-    },
-  "exclude": ["node_modules", "**/node_modules", "dist"]
+    "checkJs": true,
+    "jsx": "preserve"
+  },
+  "include": ["src/**/*.js", "src/**/*.jsx"],
+  "exclude": ["node_modules", "**/node_modules"]
 }
